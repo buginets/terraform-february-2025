@@ -18,12 +18,12 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
-  subnet_id = data.terraform_remote_state.vpc.outputs.subnet_id
+  subnet_id = var.subnet_id
 }
 
-variable instance_type {
-    default = "t2.micro"
-}
+variable instance_type {}
+variable subnet_id {}
+    
 
 data terraform_remote_state vpc {
     backend = "local"
